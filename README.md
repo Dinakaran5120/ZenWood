@@ -1,205 +1,121 @@
-Act as a senior mobile game architect, SaaS system designer, and Play Store compliance expert.
+Create a production-ready Flutter + Flame project architecture for a modern Android block blasting puzzle game.
 
-Build a production-ready, scalable Block Blast game app with full monetization and backend architecture.
+Requirements:
+- Clean scalable architecture
+- Feature-based folder structure
+- Flame engine integration
+- Firebase integration setup
+- AdMob integration setup
+- State management using Riverpod
+- Responsive UI
+- Smooth animations
+- Sound manager
+- Theme system
+- Leaderboard system
+- Avatar customization support
+- Daily rewards support
+- In-app purchase support
 
-TECH STACK:
-- Flutter (latest stable)
-- Clean Architecture
-- State management: Riverpod or Bloc
-- Backend: Firebase (Auth + Firestore + Cloud Functions)
-- AdMob integration
-- Secure production setup
+Generate:
+1. Complete folder structure
+2. pubspec.yaml dependencies
+3. Main architecture explanation
+4. Best practices for performance
+5. Recommended packages
 
------------------------------------
-1. UI REQUIREMENTS
------------------------------------
-- Recreate the exact UI from provided screens.
-- Match layout precisely.
-- Implement proper navigation flow.
-- Use responsive design.
-- Add smooth animations everywhere.
-- Use modern clean UI.
-- Add haptic feedback.
 
------------------------------------
-2. CORE GAME LOGIC
------------------------------------
-- Grid-based board system.
-- Drag and drop blocks.
-- Collision detection.
-- Row and column clear logic.
-- Score system.
-- Level progression.
-- Game over detection (no valid moves).
-- Win condition system.
-- Optimized performance.
-- Modular reusable logic.
+   Build the complete block blast gameplay system using Flutter Flame.
 
------------------------------------
-3. ANIMATIONS
------------------------------------
-- Button press animation.
-- Block placement animation.
-- Line clear blast animation with particle effects.
-- Game over animation.
-- Win celebration animation.
-- Screen transition animations.
+Features:
+- 8x8 grid
+- Drag and drop blocks
+- Snap placement
+- Row and column clearing
+- Combo scoring
+- Animated block blast
+- Sound effects
+- Game over detection
+- Smooth animations
+- Mobile optimized performance
 
------------------------------------
-4. SOUND SYSTEM
------------------------------------
-- Click sound.
-- Block drop sound.
-- Blast sound.
-- Win sound.
-- Game over sound.
-- Sound toggle in settings.
-- Persistent user preference storage.
+Code should be production-ready and modular.
 
------------------------------------
-5. ADS INTEGRATION (AdMob)
------------------------------------
-- Banner ads (home screen).
-- Interstitial ads (after game over).
-- Rewarded ads (extra coins / revive).
-- Ad frequency control.
-- Remote config control for ads.
-- Comply with Google Play policies.
+Create a premium animated forest theme for the game.
 
------------------------------------
-6. IN-APP PURCHASES
------------------------------------
-- Remove ads purchase.
-- Coin packs.
-- Power-up bundles.
-- Use Google Play Billing.
-- Secure purchase validation.
-- Server-side verification.
+Requirements:
+- Animated glowing particles
+- Floating leaves
+- Dynamic lighting
+- Smooth background animations
+- Fantasy forest atmosphere
+- Premium mobile game UI style
+- Responsive design
+- Beautiful buttons and panels
 
------------------------------------
-7. SUBSCRIPTION MODEL
------------------------------------
-- Monthly premium subscription.
-- Benefits:
-   - Remove ads.
-   - Exclusive themes.
-   - Bonus rewards.
-   - Cloud save priority.
-- Handle subscription status via backend verification.
+Also prepare architecture for:
+- Beach theme
+- Devil theme
+- Angel theme
 
------------------------------------
-8. DAILY REWARDS SYSTEM
------------------------------------
-- Daily login reward.
-- Streak system.
-- Increasing rewards.
-- Server-validated to prevent cheating.
-- Time-based validation.
-- Store reward state in Firestore.
+  Integrate Firebase into the game.
 
------------------------------------
-9. POWER-UPS SYSTEM
------------------------------------
-Add in-game boosters:
-- Undo move.
-- Shuffle blocks.
-- Bomb clear.
-- Extra slot.
-- Revive after game over.
-- Consumable coin-based system.
+Features:
+- Firebase Authentication
+- Firestore database
+- Store username
+- Store score
+- Store user location
+- Global leaderboard
+- Daily reward tracking
+- Cloud save support
 
------------------------------------
-10. OFFLINE MODE
------------------------------------
-- Game playable without internet.
-- Local storage for scores.
-- Sync when online.
-- Graceful fallback.
+Generate complete setup instructions.
 
------------------------------------
-11. CLOUD SAVE
------------------------------------
-- User authentication (Google + Email).
-- Save:
-   - Score
-   - Level
-   - Coins
-   - Settings
-- Firestore integration.
-- Real-time sync.
+Integrate Google AdMob into Flutter game.
 
------------------------------------
-12. ANTI-CHEAT PROTECTION
------------------------------------
-- Server-side score validation.
-- Prevent local score manipulation.
-- Secure cloud functions.
-- Validate purchases on server.
-- Detect abnormal score jumps.
-- Use Firebase security rules.
-- Obfuscate code for release build.
+Requirements:
+- Rewarded ads
+- Interstitial ads
+- Banner ads
+- Daily reward ads
+- Continue-after-fail ads
 
------------------------------------
-13. ADMIN DASHBOARD
------------------------------------
-Create a simple web admin panel:
-- View users.
-- View revenue.
-- Manage rewards.
-- Control daily reward values.
-- Enable/disable ads remotely.
-- Send push notifications.
-- Use Firebase or simple Node.js dashboard.
+Use production-ready implementation.
 
------------------------------------
-14. ANALYTICS
------------------------------------
-Integrate:
-- Firebase Analytics.
-- Track:
-   - Game start.
-   - Game over.
-   - Level completion.
-   - Ad impressions.
-   - Purchases.
-   - Retention.
-- Track user behavior for optimization.
+Build human avatar customization and in-game store system.
 
------------------------------------
-15. PLAY STORE READINESS
------------------------------------
-- Follow Google Play policies.
-- Add privacy policy integration.
-- Data safety section compliance.
-- Secure API keys.
-- No hardcoded secrets.
-- Proper app signing.
-- Release build optimization.
-- Proguard enabled.
-- Versioning system.
+Features:
+- Buy accessories with coins
+- Hats
+- Wings
+- Glasses
+- Devil horns
+- Angel halo
+- Bomb powerups
+- Coin management
+- Inventory system
 
------------------------------------
-16. PROJECT STRUCTURE
------------------------------------
-Provide full folder structure:
-- presentation/
-- domain/
-- data/
-- services/
-- models/
-- widgets/
-- core/
-- utils/
+Use clean UI with animations.
 
-Use clean architecture principles.
+Create a premium animated daily spin wheel.
 
------------------------------------
-OUTPUT REQUIRED:
------------------------------------
-- Complete code implementation.
-- Backend setup guide.
-- Firebase configuration steps.
-- AdMob setup steps.
-- Play Store deployment checklist.
-- Security best practices.
-- Monetization flow diagram.
+Features:
+- One free spin every 24 hours
+- Coin rewards
+- Bomb rewards
+- Theme rewards
+- Smooth spin physics
+- Reward popup animations
+- Firebase tracking
+
+  Optimize the entire game for Play Store release.
+
+Requirements:
+- Performance optimization
+- Memory optimization
+- Android release build
+- App icon
+- Splash screen
+- Firebase analytics
+- Crashlytics
+- Play Store readiness checklist
