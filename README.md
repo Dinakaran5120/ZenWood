@@ -1,134 +1,186 @@
-You are a senior game developer and software engineer.
-Analyze my existing game codebase completely and implement the following fixes and improvements in a production-ready way without breaking existing functionality.
+You are a senior mobile app architect and authentication system engineer.
+Analyze my existing game app codebase and implement a complete production-ready authentication and onboarding flow with proper session management, persistence, guest mode handling, and navigation architecture.
 
-GAME LOGIC REQUIREMENTS
+AUTH FLOW REQUIREMENTS
 
-1. SCORE SYSTEM FIX
+1. NEW USER FLOW
+   For a completely new user, the app flow should be:
 
-* Score should NOT increase when placing blocks on the board.
-* Score should ONLY increase when rows or columns are cleared/blasted.
-* Each blasted block should give exactly 5 points.
-* Example:
+App Launch
+→ Splash/App Loading
+→ Sign In Page
 
-  * if 4 blocks are blasted = 20 points
-  * if 10 blocks are blasted = 50 points
-* Ensure score updates correctly everywhere:
-
-  * gameplay screen
-  * levels page
-  * store page
-  * persistent storage/save data
-* Remove all old score increment logic tied to block placement.
-
-2. BLOCK SHAPE CONSISTENCY FIX
-
-* Sometimes the block shape changes unexpectedly after placement.
-* Fix the issue completely.
-* The block shape preview and the placed block must always remain identical.
-* Ensure:
-
-  * no mutation bugs
-  * no reference/state corruption
-  * shape rotation/state consistency
-* Add proper validation and state isolation to prevent future inconsistencies.
-
-3. NEXT LEVEL BOARD RESET
-
-* Whenever user moves to the next level:
-
-  * clear the entire board/grid completely
-  * reset all temporary gameplay states
-  * no old blocks should remain
-* Ensure level transitions are smooth and bug-free.
-
-4. REMOVE SCORE FROM BLOCK PLACEMENT
-
-* Double-check entire codebase and ensure:
-
-  * placing blocks never increases score
-  * ONLY blast/clear events increase score.
-
-5. LEVEL & TIMER SYSTEM
-
-* Starting from Level 10:
-
-  * enable countdown timer.
-* Initial timer:
-
-  * 60 minutes.
-* Difficulty should increase progressively for each level.
-* Levels should support infinite progression architecture.
-* Initially implement first 50 handcrafted/generated levels.
-* After Level 50:
-
-  * if user tries to swipe/navigate further,
-  * show message:
-    "Coming Soon"
-* Ensure level progression system is scalable and production-ready.
-
-6. AUTO-GENERATED LEVELS AFTER LEVEL 50
-
-* Implement procedural/dynamic level generation system after Level 50.
-* Generated levels should:
-
-  * increase difficulty gradually
-  * introduce new patterns/features
-  * avoid repetition
-  * remain playable and balanced
-* Use scalable architecture for future level expansion.
-
-7. SOUND SYSTEM IMPLEMENTATION
-   Implement complete game audio feedback system.
-
-Required sounds:
-
-* block placement sound
-* row/column clear blast sound
-* button click sound
-* level complete sound
-* game over sound
+* Sign Up with Google button
+* Login button
+* Play as Guest button
+  → Username Setup Page
+  → Terms & Conditions Page with checkbox confirmation
+  → Levels Page
+  → Game
 
 Requirements:
 
-* low latency playback
-* no overlapping audio glitches
-* centralized audio manager/service
-* mute/unmute support
-* volume handling support
-* optimized for mobile performance
+* User cannot proceed without accepting Terms & Conditions.
+* Username must be validated:
 
-PRODUCTION REQUIREMENTS
+  * no empty username
+  * prevent invalid characters if necessary
+  * trim unnecessary spaces
+* Persist onboarding completion state properly.
 
-* Refactor messy logic where necessary.
-* Avoid hacks or temporary fixes.
-* Ensure maintainable architecture.
-* Remove duplicate logic.
-* Optimize performance.
-* Prevent memory leaks.
-* Ensure smooth gameplay on mobile devices.
-* Add proper comments where necessary.
-* Maintain clean state management.
-* Ensure persistence/save system works correctly.
-* Ensure no regressions in existing features.
+2. EXISTING GOOGLE USER FLOW
+   If user has already signed up using Google and session/token exists:
+
+App Launch
+→ Splash/App Loading
+→ Auto-login
+→ Levels Page
+→ Game
+
+Requirements:
+
+* No onboarding screens should appear again.
+* Session restoration should be fast and reliable.
+* Implement proper token/session validation.
+* Handle expired session gracefully.
+
+3. REINSTALL / RETURNING USER FLOW
+   If user uninstalls and reinstalls the app:
+
+App Launch
+→ Splash/App Loading
+→ Sign In Page
+
+Then user should be able to:
+
+* login using previously connected Google account
+  OR
+* login using previously created username/account system if applicable.
+
+Requirements:
+
+* Restore previous profile data after login.
+* Restore:
+
+  * levels
+  * score
+  * coins
+  * progression
+  * settings
+* Prevent duplicate account creation.
+
+4. GUEST USER FLOW
+   If user clicks “Play as Guest”:
+
+App Launch
+→ Play as Guest
+→ Username Setup
+→ Terms & Conditions
+→ Levels Page
+
+Requirements:
+
+* Guest username should persist locally.
+* When guest reopens app:
+
+  * continue with same guest username automatically
+  * do NOT ask username repeatedly
+* Maintain guest progression locally.
+* Properly separate guest accounts from authenticated accounts.
+
+5. LEVEL PAGE UI CHANGES
+   Inside Levels Page:
+
+* Place Settings button at top-right corner.
+* Position it beside the coin display/update area.
+
+Requirements:
+
+* Remove Settings button completely from Game Page.
+* Centralize app settings access only through Levels Page.
+* Ensure clean responsive UI layout.
+
+6. SETTINGS PAGE IMPROVEMENTS
+   Inside Settings page:
+
+* Add Logout button at the bottom/end.
+
+Logout requirements:
+
+* Clear active session properly.
+* Navigate back to Sign In page.
+* Preserve data correctly depending on account type.
+* Prevent navigation bugs after logout.
+* Handle:
+
+  * Google logout
+  * guest logout
+  * local session cleanup
+
+ARCHITECTURE REQUIREMENTS
+
+Implement this in a scalable, production-ready architecture.
+
+Requirements:
+
+* Clean navigation flow
+* Proper auth state management
+* Persistent storage handling
+* Session restoration
+* Secure token handling
+* Avoid duplicated navigation logic
+* Prevent race conditions during app launch
+* Prevent onboarding loop bugs
+* Ensure smooth transitions between screens
+
+STATE MANAGEMENT REQUIREMENTS
+
+Ensure all user states are handled correctly:
+
+* first-time user
+* logged-in Google user
+* returning user
+* guest user
+* logged-out user
+* expired session user
+
+Persist and restore:
+
+* username
+* progress
+* levels
+* coins
+* settings
+* achievements if applicable
+
+UI/UX REQUIREMENTS
+
+* Smooth transitions
+* No flickering during auth checks
+* Loading states where necessary
+* Proper error handling
+* Responsive mobile UI
+* Clean onboarding experience
 
 TESTING REQUIREMENTS
 
-After implementation:
+After implementation thoroughly test:
 
-* verify scoring logic
-* verify timer logic
-* verify level transitions
-* verify sound triggers
-* verify procedural levels
-* verify board reset behavior
-* verify shape consistency
-* verify persistence/save state
-* test edge cases thoroughly
+* first install flow
+* Google login flow
+* guest login flow
+* reinstall flow
+* logout flow
+* session persistence
+* onboarding completion
+* navigation edge cases
+* app restart behavior
+* corrupted local storage handling
 
 Finally:
 
 * provide clean updated code
-* explain major fixes implemented
-* explain architecture improvements
-* mention any assumptions made
-* ensure the final implementation is production-ready.
+* explain major architectural changes
+* explain auth/session flow implementation
+* mention all assumptions made
+* ensure final implementation is production-ready and scalable.
